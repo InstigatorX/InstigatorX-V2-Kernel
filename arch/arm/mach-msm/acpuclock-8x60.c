@@ -164,6 +164,7 @@ static struct msm_bus_paths bw_level_tbl[] = {
 	[2] = BW_MBPS(2008), /* At least 251 MHz on bus. */
 	[3] = BW_MBPS(2480), /* At least 310 MHz on bus. */
 	[4] = BW_MBPS(3200), /* At least 400 MHz on bus. */
+	[5] = BW_MBPS(3464), /* At least 433 MHz on bus. */
 };
 
 static struct msm_bus_scale_pdata bus_client_pdata = {
@@ -199,7 +200,7 @@ static struct clkctl_l2_speed l2_freq_tbl_v2[] = {
 	[19] = {1404000,  1, 0x1A, 1200000, 1250000, 3},
 	[20] = {1458000,  1, 0x1B, 1200000, 1250000, 4},
 	[21] = {1512000,  1, 0x1C, 1200000, 1250000, 4},
-	[22] = {1566000,  1, 0x1D, 1200000, 1250000, 4},
+	[22] = {1566000,  1, 0x1D, 1200000, 1250000, 5},
 	[23] = {1620000,  1, 0x1E, 1200000, 1275000, 4},
 	[24] = {1674000,  1, 0x1F, 1200000, 1275000, 4},
 	[25] = {1728000,  1, 0x20, 1200000, 1300000, 4},
