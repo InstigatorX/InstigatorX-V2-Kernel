@@ -1,5 +1,16 @@
-*.o
+#
+# NOTE! Don't add files that are generated in specific
+# subdirectories here. Add them in the ".gitignore" file
+# in that subdirectory instead.
+#
+# NOTE! Please use 'git ls-files -i --exclude-standard'
+# command after changing this file, to see if there are
+# any tracked files which get ignored after the change.
+#
+# Normal rules
+#
 .*
+*.o
 *.o.*
 *.a
 *.s
@@ -12,7 +23,6 @@
 *.symtypes
 *.order
 modules.builtin
-!drivers/mfd/cg2900/modules.order
 *.elf
 *.bin
 *.gz
@@ -22,8 +32,10 @@ modules.builtin
 *.lzo
 *.patch
 *.gcno
-scripts/*
-.DS_Store
+
+#
+# Top-level generic files
+#
 /tags
 /TAGS
 /linux
@@ -32,35 +44,48 @@ scripts/*
 /System.map
 /Module.markers
 /Module.symvers
-/zImage
+
+#
+# git files that we don't want to ignore even it they are dot-files
+#
 !.gitignore
 !.mailmap
+
+#
+# Generated include files
+#
 include/config
 include/linux/version.h
 include/generated
-arch/*/include/generated
-zImage
-include/asm
-include/asm-arm
-include/config
-include/linux/autoconf.h
-include/linux/compile.h
-include/linux/version.h
-include/linux/utsrelease.h
-include/linux/bounds.h
-include/generated
+
+#
+# Generated build output
+#
+arch/arm/boot/compressed/piggy.xzkern.S
+arch/arm/boot/compressed/lib1funcs.S
+arch/arm/boot/compressed/ashldi3.S
+arch/arm/boot/compressed/piggy.gzip
+arch/arm/boot/compressed/piggy.xzkern
+arch/arm/boot/compressed/vmlinux
+arch/arm/mach-msm/smd_rpc_sym.c
+
+# stgit generated dirs
 patches-*
+
+# quilt's files
 patches
 series
+
+# cscope files
 cscope.*
 ncscope.*
+
+# gnu global files
 GPATH
 GRTAGS
 GSYMS
 GTAGS
+
 *.orig
 *~
 \#*#
-_t32
-_tool
-Module.symvers
