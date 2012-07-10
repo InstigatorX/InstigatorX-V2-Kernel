@@ -23,7 +23,6 @@ modules.builtin
 *.patch
 *.gcno
 scripts/*
-arch/arm/boot/*
 .DS_Store
 /tags
 /TAGS
