@@ -88,7 +88,7 @@
 /* PTE EFUSE register. */
 #define QFPROM_PTE_EFUSE_ADDR		(MSM_QFPROM_BASE + 0x00C0)
 
-#define FREQ_TABLE_SIZE      35
+#define FREQ_TABLE_SIZE      36
 
 static const void * const clk_ctl_addr[] = {SPSS0_CLK_CTL_ADDR,
 			SPSS1_CLK_CTL_ADDR};
@@ -239,9 +239,7 @@ static struct clkctl_acpu_speed acpu_freq_tbl_slow[] = {
   { {1, 1}, 1674000,  ACPU_SCPLL, 0, 0, 1, 0x1F, L2(22), 1275000, 0x03006000},
   { {1, 1}, 1728000,  ACPU_SCPLL, 0, 0, 1, 0x20, L2(22), 1300000, 0x03006000},
   { {1, 1}, 1782000,  ACPU_SCPLL, 0, 0, 1, 0x21, L2(22), 1300000, 0x03006000},
-/*
-  { {1, 1}, 1836000,  ACPU_SCPLL, 0, 0, 1, 0x22, L2(26), 1350000, 0x03006000},
-*/
+  { {1, 1}, 1836000,  ACPU_SCPLL, 0, 0, 1, 0x22, L2(22), 1350000, 0x03006000},
   { {0, 0}, 0 },
 };
 
