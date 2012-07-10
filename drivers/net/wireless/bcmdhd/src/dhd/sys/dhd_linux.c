@@ -3751,8 +3751,12 @@ dhd_preinit_ioctls(dhd_pub_t *dhd)
 
 #ifdef PKT_FILTER_SUPPORT
 	/* Setup defintions for pktfilter , enable in suspend */
-	dhd->pktfilter_count = 1;
+	dhd->pktfilter_count = 4;
+	/* Setup filter to allow only unicast */
 	dhd->pktfilter[0] = "100 0 0 0 0x01 0x00";
+	dhd->pktfilter[1] = NULL;
+	dhd->pktfilter[2] = NULL;
+	dhd->pktfilter[3] = NULL;
 #if defined(SOFTAP)
 	if (ap_fw_loaded) {
 		int i;
@@ -4968,10 +4972,6 @@ int net_os_rxfilter_add_remove(struct net_device *dev, int add_remove, int num)
 			filterp = "102 0 0 0 0xFFFFFF 0x01005E";
 			break;
 		case DHD_MULTICAST6_FILTER_NUM:
-#if defined(CUSTOMER_HW_SAMSUNG)
-/* customer want to use NO IPV6 packets only */
-			return ret;
-#endif
 			filterp = "103 0 0 0 0xFFFF 0x3333";
 			break;
 		default:
