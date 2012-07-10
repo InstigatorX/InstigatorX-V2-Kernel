@@ -1198,16 +1198,17 @@ static void bds_refresh_callback(struct work_struct *unused)
 	struct cpufreq_policy *policy;
 	struct cpu_bds_info_s *this_bds_info;
 	unsigned int cpu = smp_processor_id();
+	
+	get_online_cpus();
 
 	if (lock_policy_rwsem_write(cpu) < 0)
-		return;
-
+		goto bail_acq_sema_failed;
+		
 	this_bds_info = &per_cpu(od_cpu_bds_info, cpu);
 	policy = this_bds_info->cur_policy;
 	if (!policy) {
 		/* CPU not using badass governor */
-		unlock_policy_rwsem_write(cpu);
-		return;
+		goto bail_incorrect_governor;
 	}
 
 	if (policy->cur < policy->max) {
@@ -1218,7 +1219,13 @@ static void bds_refresh_callback(struct work_struct *unused)
 		this_bds_info->prev_cpu_idle = get_cpu_idle_time(cpu,
 				&this_bds_info->prev_cpu_wall);
 	}
+
+bail_incorrect_governor:
 	unlock_policy_rwsem_write(cpu);
+
+bail_acq_sema_failed:
+	put_online_cpus();
+	return;
 }
 
 static unsigned int enable_bds_input_event;
