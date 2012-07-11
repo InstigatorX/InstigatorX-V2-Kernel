@@ -848,7 +848,7 @@ uint32_t acpu_check_khz_value(unsigned long khz)
 {
 	struct clkctl_acpu_speed *f;
 
-	if (khz > 1836000)
+	if (khz > 1782000)
 		return CONFIG_MSM_CPU_FREQ_MAX;
 
 	if (khz < 192000)
@@ -890,7 +890,7 @@ static unsigned int __init select_freq_plan(void)
 	uint32_t max_khz;
 	struct clkctl_acpu_speed *f;
 
-	max_khz = 1836000;
+	max_khz = 1782000;
 		acpu_freq_tbl = acpu_freq_tbl_slow;
 
 	/* Truncate the table based to max_khz. */
