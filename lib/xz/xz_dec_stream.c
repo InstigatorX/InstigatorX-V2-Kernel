@@ -7,7 +7,6 @@
  * You can do whatever you want with this file.
  */
 
-#include <linux/kernel.h>
 #include "xz_private.h"
 #include "xz_stream.h"
 
